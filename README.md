@@ -17,5 +17,12 @@ RA: 1272316474
 - Aluno: Samuel Pereira de Souza/
  RA: 132723112947
 
+ 📦 Tecnologias e Requisitos
+
+- **Linguagem:** JavaScript (Node.js)
+- **Banco de Dados:** MYySQL (relacional)
+- **Containers:** Docker e Docker Compose
+
+
 
 
