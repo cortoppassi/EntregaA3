@@ -20,7 +20,7 @@ RA: 1272316474
  📦 Tecnologias e Requisitos
 
 - **Linguagem:** JavaScript (Node.js)
-- **Banco de Dados:** MYySQL (relacional)
+- **Banco de Dados:** MySQL (relacional)
 - **Containers:** Docker e Docker Compose
 
 
