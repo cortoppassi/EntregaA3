@@ -6,7 +6,7 @@ Projeto desenvolvido para a avaliação A3 da disciplina de Sistemas Distribuíd
 
  👥 Integrantes da Equipe
 
-- Alice Gomes Nascimento / RA: 1272328052
+- Alice Gomes Nascimento /  RA: 1272328052
 - Nome Completo / RA:
 - Nome Completo / RA:
 - Nome Completo / RA:
