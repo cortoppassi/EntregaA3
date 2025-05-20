@@ -6,12 +6,16 @@ Projeto desenvolvido para a avaliação A3 da disciplina de Sistemas Distribuíd
 
  👥 Integrantes da Equipe
 
-- Aluna: Alice Gomes Nascimento
+- Aluna: Alice Gomes Nascimento/
 RA: 1272328052
+- Aluno: Dinaldo Ribeiro de Carvalho/
+RA: 1272329374
+- Aluno: Jonathan Cortopassi/
+RA: 12723213891
+- Aluno: Rogério Carmo Rodrigues/
+RA: 1272316474
+- Aluno: Samuel Pereira de Souza/
+ RA: 132723112947
 
-- Nome Completo / RA:
-- Nome Completo / RA:
-- Nome Completo / RA:
--  Nome Completo / RA:
 
 
