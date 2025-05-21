@@ -12,8 +12,6 @@ RA: 1272328052
 RA: 1272329374
 - Aluno: Jonathan Cortopassi/
 RA: 12723213891
-- Aluno: Rogério Carmo Rodrigues/
-RA: 1272316474
 - Aluno: Samuel Pereira de Souza/
  RA: 132723112947
 
