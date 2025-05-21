@@ -70,13 +70,66 @@ A aplicação inicia com:
 
 ### Passos para execução
 
-```bash
+
 # Clone o repositório
-git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+git clone https://github.com/cortoppassi/EntregaA3/tree/main
 cd SEU-REPO
 
 # Suba os containers
-docker-compose up --build
+docker-compose up --build  
+
+## Backend principal acessível em: http://localhost:3000
+
+Serviço de relatórios acessível em: http://localhost:3001 (ou outra porta definida)
+---
+
+🧱 Estrutura do Projeto
+# /código-fonte
+  ├── cliente/
+  ├── vendedor/
+  ├── estoque/
+  ├── vendas/
+  ├── relatorios/
+  └── docker-compose.yml
+
+/relatório
+  └── TrabalhoA3-Relatorio.pdf
+
+## 🔧 Organização das Pastas e Arquitetura
+
+O projeto está organizado seguindo a arquitetura MVC + Repository + Services, garantindo separação de responsabilidades e escalabilidade.
+
+| Camada               | Função                                             |
+| -------------------- | -------------------------------------------------- |
+| models/              | Representam as tabelas do banco com Sequelize      |
+| repositories/        | Lidam diretamente com queries no banco de dados    |
+| services/            | Aplicam regras de negócio e validam dados          |
+| controllers/         | Respondem às requisições HTTP e chamam os services |
+| routes/              | Organizam as rotas da API (Express)                |
+| database/            | Configurações e seeds do Sequelize                 |
+| Dockerfile           | Containeriza a aplicação                           |
+| docker-compose.yml   | Junta os serviços e banco num mesmo ambiente       |
+
+---
+
+🧠 Arquitetura e Estratégia
+Arquitetura de microserviços: cada funcionalidade principal roda em um container separado
+
+Comunicação via APIs REST
+
+Banco de dados relacional compartilhado (MySQL)
+
+Relatórios como serviço separado para facilitar escalabilidade
+
+---
+📑 Licença
+Projeto acadêmico — uso exclusivamente educacional.
+
+
+
+
+
+
 
 
 
