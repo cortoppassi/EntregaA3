@@ -84,8 +84,9 @@ docker-compose up --build
 ---
 
 🧱 Estrutura do Projeto
-# /código-fonte
-  -├── cliente/
+
+ /código-fonte
+  - ├── cliente/
  - ├── vendedor/
  - ├── estoque/
  - ├── vendas/
