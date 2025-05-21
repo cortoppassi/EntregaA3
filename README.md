@@ -64,11 +64,11 @@ A aplicação inicia com:
 
 ## 🐳 Como Executar com Docker
 
-### Pré-requisitos
+## Pré-requisitos
 - Docker instalado
 - Docker Compose instalado
 
-### Passos para execução
+## Passos para execução
 
 
 # Clone o repositório
@@ -85,12 +85,12 @@ docker-compose up --build
 
 🧱 Estrutura do Projeto
 # /código-fonte
-  ├── cliente/
-  ├── vendedor/
-  ├── estoque/
-  ├── vendas/
-  ├── relatorios/
-  └── docker-compose.yml
+  -├── cliente/
+ - ├── vendedor/
+ - ├── estoque/
+ - ├── vendas/
+  -├── relatorios/
+ - └── docker-compose.yml
 
 /relatório
   └── TrabalhoA3-Relatorio.pdf
