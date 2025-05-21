@@ -17,11 +17,66 @@ RA: 12723213891
 
 ---
 
- 📦 Tecnologias e Requisitos
+## 🧰 Tecnologias Utilizadas
 
-- **Linguagem:** JavaScript (Node.js)
-- **Banco de Dados:** MySQL (relacional)
-- **Containers:** Docker e Docker Compose
+- **Linguagem:** JavaScript (Node.js)  
+- **Framework:** Express.js  
+- **Banco de Dados:** MySQL  
+- **ORM:** Sequelize  
+- **Containers:** Docker e Docker Compose  
+- **Outros:** dotenv, axios, express-validator  
+- **Relatórios:** Serviço separado para geração de relatórios
+
+---
+
+## ⚙️ Funcionalidades da Aplicação
+
+### 📁 Módulo Cliente
+- Cadastro, edição, listagem e remoção de clientes (CRUD)
+
+### 🧑‍💼 Módulo Vendedor
+- Cadastro, edição, listagem e remoção de vendedores (CRUD)
+
+### 📦 Módulo Produto e Estoque
+- Cadastro de produtos
+- Atualização de quantidade em estoque
+
+### 💰 Módulo Vendas
+- Realização de pedidos de compra
+- Cancelamento de pedidos
+
+### 📊 Módulo Relatórios
+- Produtos mais vendidos  
+- Produtos comprados por cliente  
+- Consumo médio por cliente  
+- Produtos com estoque baixo  
+
+---
+
+## 📦 Requisitos Mínimos
+
+A aplicação inicia com:
+- ✅ 25 produtos cadastrados  
+- ✅ 5 clientes cadastrados  
+- ✅ 2 vendedores cadastrados  
+
+---
+
+## 🐳 Como Executar com Docker
+
+### Pré-requisitos
+- Docker instalado
+- Docker Compose instalado
+
+### Passos para execução
+
+```bash
+# Clone o repositório
+git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+cd SEU-REPO
+
+# Suba os containers
+docker-compose up --build
 
 
 
