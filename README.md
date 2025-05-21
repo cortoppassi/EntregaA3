@@ -72,15 +72,15 @@ A aplicação inicia com:
 
 
 # Clone o repositório
-git clone https://github.com/cortoppassi/EntregaA3/tree/main
+- git clone https://github.com/cortoppassi/EntregaA3/tree/main
 cd SEU-REPO
 
-# Suba os containers
+- Suba os containers
 docker-compose up --build  
 
-## Backend principal acessível em: http://localhost:3000
+- Backend principal acessível em: http://localhost:3000
 
-Serviço de relatórios acessível em: http://localhost:3001 (ou outra porta definida)
+- Serviço de relatórios acessível em: http://localhost:3001 (ou outra porta definida)
 ---
 
 🧱 Estrutura do Projeto
