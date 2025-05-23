@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+const { routesController } = require("./routes/routes");
 const db = require('./src/models/index.js');
+routesController(app);
+
+app.use(express.json());
 
 db.sequelize.sync({ alter: true })
   .then(() => {
@@ -14,8 +18,3 @@ db.sequelize.sync({ alter: true })
   .catch(err => {
     console.error('Erro ao sincronizar com o banco de dados:', err);
   });
-
-// Rotas
-app.get('/', (req, res) => {
-  res.send('Servidor rodando!');
-});
