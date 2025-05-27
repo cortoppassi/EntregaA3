@@ -71,9 +71,8 @@ A aplicação inicia com:
 ## Passos para execução
 
 
-# Clone o repositório
+# Clone  repositório
 - git clone https://github.com/cortoppassi/EntregaA3/tree/main
-cd SEU-REPO
 
 - Suba os containers
 docker-compose up --build  
