@@ -16,8 +16,8 @@
 
 ## 📝 Descrição
 
-Projeto desenvolvido para a avaliação A3 da disciplina de **Sistemas Distribuídos e Mobile**. A aplicação simula uma rede de loja de livros (Ânima Books Ltda) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
-Nossa aplicação foi organizada em módulos, onde cada módulo representa um domínio do sistema, como clientes, produtos, vendas e vendedores. Cada módulo encapsula seu próprio conjunto de modelos, serviços, repositórios, controllers e rotas, promovendo uma arquitetura limpa, escalável e de fácil manutenção.
+- Projeto desenvolvido para a avaliação A3 da disciplina de **Sistemas Distribuídos e Mobile**. A aplicação simula uma rede de loja de livros (Ânima Books Ltda) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
+- Nossa aplicação foi organizada em módulos, onde cada módulo representa um domínio do sistema, como clientes, produtos, vendas e vendedores. Cada módulo encapsula seu próprio conjunto de modelos, serviços, repositórios, controllers e rotas, promovendo uma arquitetura limpa, escalável e de fácil manutenção.
 
 ## 👥 Integrantes da Equipe
 
