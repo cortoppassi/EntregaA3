@@ -1,5 +1,4 @@
-[JAVASCRIPT__BADGE] https://img.shields.io/badge/Javascript-000?style=for-the-badge&logo=javascript
-[MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
  
  
  🛍️ Sistema de Gestão de Vendas - A3 (Sistemas Distribuídos e Mobile)
