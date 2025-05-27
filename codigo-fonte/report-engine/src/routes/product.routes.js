@@ -7,4 +7,4 @@ router.get('/:id', productController.getProductById);
 router.put('/:id', productController.updateProduct);
 router.delete('/:id', productController.deleteProduct);
 
-module.exports =  { alias: '/product', router}
+module.exports =  { alias: '/products', router}
