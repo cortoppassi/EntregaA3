@@ -1,3 +1,15 @@
+# 🛍️ Sistema de Gestão de Vendas - A3
+
+![Node.js](https://img.shields.io/badge/Node.js-18.x-brightgreen?logo=node.js)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
+![Arquitetura](https://img.shields.io/badge/Arquitetura-Microservices-informational)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![License](https://img.shields.io/badge/license-Academic-lightgrey)
+
+![Repo Size](https://img.shields.io/github/repo-size/cortoppassi/EntregaA3)
+![Last Commit](https://img.shields.io/github/last-commit/cortoppassi/EntregaA3)
+![Issues](https://img.shields.io/github/issues/cortoppassi/EntregaA3)
+![GitHub Stars](https://img.shields.io/github/stars/cortoppassi/EntregaA3?style=social)
 
  
  
