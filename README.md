@@ -76,11 +76,11 @@ DB_PASSWORD=sua_senha
 DB_NAME=loja
 DB_PORT=3306
 ```
-### Pré-requisitos para instalação 
--Node.js (v18 ou superior)
--npm (v9 ou superior)
--Banco de dados MySQL
--Docker(v20.10)
+## Pré-requisitos para instalação 
+- Node.js (v18 ou superior)
+- npm (v9 ou superior)
+- Banco de dados MySQL
+- Docker(v20.10)
 
 ## 🐳 Como Executar com Docker
 
