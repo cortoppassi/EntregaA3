@@ -1,3 +1,7 @@
+[JAVASCRIPT__BADGE]: https://img.shields.io/badge/Javascript-000?style=for-the-badge&logo=javascript
+MySQL	MySQL	![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+ 
+ 
  🛍️ Sistema de Gestão de Vendas - A3 (Sistemas Distribuídos e Mobile)
 
 Projeto desenvolvido para a avaliação A3 da disciplina de Sistemas Distribuídos e Mobile. A aplicação simula uma rede de loja de livros ( Ânima Books Ltda ) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
