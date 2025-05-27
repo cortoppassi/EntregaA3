@@ -76,7 +76,7 @@ DB_PASSWORD=sua_senha
 DB_NAME=loja
 DB_PORT=3306
 ```
-## Pré-requisitos para instalação 
+## 📦 Requisitos para instalação 
 - Node.js (v18 ou superior)
 - npm (v9 ou superior)
 - Banco de dados MySQL
