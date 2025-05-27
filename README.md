@@ -62,12 +62,6 @@ Projeto desenvolvido para a avaliação A3 da disciplina de **Sistemas Distribu�
 - ✅ 5 clientes cadastrados
 - ✅ 2 vendedores cadastrados
 
-## 🔗 Endpoints do Serviço de Relatórios
-
-| Método | Rota | Descrição                                     |
-|--------|------|-----------------------------------------------|
-| GET    | `/`  | Verifica se o serviço está ativo (`Servidor rodando!`) |
-| ⚠️     | `/relatorios` | (Em desenvolvimento) Geração de relatórios |
 
 ## ⚙️ Variáveis de Ambiente
 
@@ -134,6 +128,13 @@ docker-compose up --build
 ## 📑 Licença
 
 🚀 **Projeto acadêmico — uso exclusivamente educacional.**
+
+## 👥 Contribuidores
+
+| [![Jonathan Cortopassi](https://avatars.githubusercontent.com/cortoppassi)](https://github.com/cortoppassi) | [![Alice Gomes Nascimento](https://avatars.githubusercontent.com/Alicegomes04)](https://github.com/Alicegomes04) | [![Dinaldo Ribeiro de Carvalho](https://avatars.githubusercontent.com/Dinaldorc)](https://github.com/Dinaldorc) | [![Samuel Pereira de Souza](https://avatars.githubusercontent.com/smksouza)](https://github.com/smksouza) |
+| :---: | :---: | :---: | :---: |
+| **Jonathan Cortopassi**<br>[GitHub](https://github.com/cortoppassi) | **Alice Gomes Nascimento**<br>[GitHub](https://github.com/Alicegomes04) | **Dinaldo Ribeiro de Carvalho**<br>[GitHub](https://github.com/Dinaldorc) | **Samuel Pereira de Souza**<br>[GitHub](https://github.com/smksouza) |
+
 
 
 
