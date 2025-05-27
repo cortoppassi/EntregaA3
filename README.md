@@ -11,40 +11,30 @@
 ![Issues](https://img.shields.io/github/issues/cortoppassi/EntregaA3)
 ![GitHub Stars](https://img.shields.io/github/stars/cortoppassi/EntregaA3?style=social)
 
- 
- 
- 🛍️ Sistema de Gestão de Vendas - A3 (Sistemas Distribuídos e Mobile)
-
-Projeto desenvolvido para a avaliação A3 da disciplina de Sistemas Distribuídos e Mobile. A aplicação simula uma rede de loja de livros ( Ânima Books Ltda ) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
-
 ---
 
- 👥 Integrantes da Equipe
+## 📝 Descrição
 
-- Aluna: Alice Gomes Nascimento/
-RA: 1272328052
-- Aluno: Dinaldo Ribeiro de Carvalho/
-RA: 1272329374
-- Aluno: Jonathan Cortopassi/
-RA: 12723213891
-- Aluno: Samuel Pereira de Souza/
- RA: 132723112947
+Projeto desenvolvido para a avaliação A3 da disciplina de **Sistemas Distribuídos e Mobile**. A aplicação simula uma rede de loja de livros (Ânima Books Ltda) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
 
----
+## 👥 Integrantes da Equipe
+
+- 🎓 **Alice Gomes Nascimento** - RA: 1272328052
+- 🎓 **Dinaldo Ribeiro de Carvalho** - RA: 1272329374
+- 🎓 **Jonathan Cortopassi** - RA: 12723213891
+- 🎓 **Samuel Pereira de Souza** - RA: 132723112947
 
 ## 🧰 Tecnologias Utilizadas
 
-- **Linguagem:** JavaScript (Node.js)  
-- **Framework:** Express.js  
-- **Banco de Dados:** MySQL  
-- **ORM:** Sequelize  
-- **Containers:** Docker e Docker Compose  
-- **Outros:** dotenv, axios, express-validator  
+- **Linguagem:** JavaScript (Node.js)
+- **Framework:** Express.js
+- **Banco de Dados:** MySQL
+- **ORM:** Sequelize
+- **Contêineres:** Docker e Docker Compose
+- **Outros:** dotenv, axios, express-validator
 - **Relatórios:** Serviço separado para geração de relatórios
 
----
-
-## ⚙️ Funcionalidades da Aplicação
+## ⚙️ Funcionalidades de Aplicação
 
 ### 📁 Módulo Cliente
 - Cadastro, edição, listagem e remoção de clientes (CRUD)
@@ -61,90 +51,89 @@ RA: 12723213891
 - Cancelamento de pedidos
 
 ### 📊 Módulo Relatórios
-- Produtos mais vendidos  
-- Produtos comprados por cliente  
-- Consumo médio por cliente  
-- Produtos com estoque baixo  
-
----
+- Produtos mais vendidos
+- Produtos comprados por cliente
+- Consumo médio por cliente
+- Produtos com estoque baixo
 
 ## 📦 Requisitos Mínimos
 
-A aplicação inicia com:
-- ✅ 25 produtos cadastrados  
-- ✅ 5 clientes cadastrados  
-- ✅ 2 vendedores cadastrados  
+- ✅ 25 produtos cadastrados
+- ✅ 5 clientes cadastrados
+- ✅ 2 vendedores cadastrados
 
----
+## 🔗 Endpoints do Serviço de Relatórios
+
+| Método | Rota | Descrição                                     |
+|--------|------|-----------------------------------------------|
+| GET    | `/`  | Verifica se o serviço está ativo (`Servidor rodando!`) |
+| ⚠️     | `/relatorios` | (Em desenvolvimento) Geração de relatórios |
+
+## ⚙️ Variáveis de Ambiente
+
+Crie um arquivo `.env` com os seguintes parâmetros:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=sua_senha
+DB_NAME=loja
+DB_PORT=3306
+```
 
 ## 🐳 Como Executar com Docker
 
-## Pré-requisitos
+### Pré-requisitos
+
 - Docker instalado
 - Docker Compose instalado
 
-## Passos para execução
+### Passos para execução
 
+```bash
+git clone https://github.com/cortoppassi/EntregaA3.git
+cd EntregaA3
+docker-compose up --build
+```
 
-# Clone  repositório
-- git clone https://github.com/cortoppassi/EntregaA3/tree/main
+- 🔗 Backend principal acessível em: http://localhost:3000
+- 🔗 Serviço de relatórios acessível em: http://localhost:3001
 
-- Suba os containers
-docker-compose up --build  
+## 🧱 Estrutura do Projeto
 
-- Backend principal acessível em: http://localhost:3000
-
-- Serviço de relatórios acessível em: http://localhost:3001 (ou outra porta definida)
----
-
-🧱 Estrutura do Projeto
-
- /código-fonte
-  - ├── cliente/
- - ├── vendedor/
- - ├── estoque/
- - ├── vendas/
-  -├── relatorios/
- - └── docker-compose.yml
-
-/relatório
-  └── TrabalhoA3-Relatorio.pdf
+```
+/codigo-fonte
+├── cliente/
+├── vendedor/
+├── estoque/
+├── vendas/
+├── relatorios/
+└── docker-compose.yml
+```
 
 ## 🔧 Organização das Pastas e Arquitetura
 
-O projeto está organizado seguindo a arquitetura MVC + Repository + Services, garantindo separação de responsabilidades e escalabilidade.
+| Camada          | Função                                          |
+|-----------------|-------------------------------------------------|
+| modelos/        | Representam as tabelas do banco (Sequelize)     |
+| repositórios/   | Consultas e acesso direto ao banco              |
+| serviços/       | Regras de negócio e validações                 |
+| controladores/  | Manipulação de requisições HTTP                |
+| rotas/          | Organização das rotas da API (Express)         |
+| banco de dados/ | Configurações e sementes do Sequelize          |
+| Dockerfile      | Conteinerização de cada microserviço           |
+| docker-compose  | Orquestra todos os serviços e banco MySQL      |
 
-| Camada               | Função                                             |
-| -------------------- | -------------------------------------------------- |
-| models/              | Representam as tabelas do banco com Sequelize      |
-| repositories/        | Lidam diretamente com queries no banco de dados    |
-| services/            | Aplicam regras de negócio e validam dados          |
-| controllers/         | Respondem às requisições HTTP e chamam os services |
-| routes/              | Organizam as rotas da API (Express)                |
-| database/            | Configurações e seeds do Sequelize                 |
-| Dockerfile           | Containeriza a aplicação                           |
-| docker-compose.yml   | Junta os serviços e banco num mesmo ambiente       |
+## 🏗️ Arquitetura e Estratégia
 
----
+- Arquitetura baseada em **microserviços**
+- Comunicação via APIs REST
+- Banco de dados relacional compartilhado (MySQL)
+- Serviço de relatórios separado para escalabilidade
 
-🧠 Arquitetura e Estratégia
-Arquitetura de microserviços: cada funcionalidade principal roda em um container separado
+## 📑 Licença
 
-Comunicação via APIs REST
-
-Banco de dados relacional compartilhado (MySQL)
-
-Relatórios como serviço separado para facilitar escalabilidade
-
----
-📑 Licença
-Projeto acadêmico — uso exclusivamente educacional.
-
-
-
-
-
-
+🚀 **Projeto acadêmico — uso exclusivamente educacional.**
 
 
 
