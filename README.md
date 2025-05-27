@@ -133,7 +133,8 @@ docker-compose up --build
 
 | [![Jonathan Cortopassi](https://avatars.githubusercontent.com/cortoppassi)](https://github.com/cortoppassi) | [![Alice Gomes Nascimento](https://avatars.githubusercontent.com/Alicegomes04)](https://github.com/Alicegomes04) | [![Dinaldo Ribeiro de Carvalho](https://avatars.githubusercontent.com/Dinaldorc)](https://github.com/Dinaldorc) | [![Samuel Pereira de Souza](https://avatars.githubusercontent.com/smksouza)](https://github.com/smksouza) |
 | :---: | :---: | :---: | :---: |
-| **Jonathan Cortopassi**<br>[GitHub](https://github.com/cortoppassi) | **Alice Gomes Nascimento**<br>[GitHub](https://github.com/Alicegomes04) | **Dinaldo Ribeiro de Carvalho**<br>[GitHub](https://github.com/Dinaldorc) | **Samuel Pereira de Souza**<br>[GitHub](https://github.com/smksouza) |
+| **[Jonathan Cortopassi](https://github.com/cortoppassi)** | **[Alice Gomes Nascimento](https://github.com/Alicegomes04)** | **[Dinaldo Ribeiro de Carvalho](https://github.com/Dinaldorc)** | **[Samuel Pereira de Souza](https://github.com/smksouza)** |
+
 
 
 
