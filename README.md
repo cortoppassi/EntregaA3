@@ -1,8 +1,9 @@
 # 🛍️ Sistema de Gestão de Vendas - A3
 
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-brightgreen?logo=node.js)
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
-![Arquitetura](https://img.shields.io/badge/Arquitetura-Microservices-informational)
+![Arquitetura](https://img.shields.io/badge/Arquitetura-Modular--Monolítica-blue)
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
 
@@ -16,6 +17,7 @@
 ## 📝 Descrição
 
 Projeto desenvolvido para a avaliação A3 da disciplina de **Sistemas Distribuídos e Mobile**. A aplicação simula uma rede de loja de livros (Ânima Books Ltda) com serviços de cadastro e controle de clientes, vendedores, produtos, vendas e geração de relatórios estatísticos.
+Nossa aplicação foi organizada em módulos, onde cada módulo representa um domínio do sistema, como clientes, produtos, vendas e vendedores. Cada módulo encapsula seu próprio conjunto de modelos, serviços, repositórios, controllers e rotas, promovendo uma arquitetura limpa, escalável e de fácil manutenção.
 
 ## 👥 Integrantes da Equipe
 
@@ -74,6 +76,11 @@ DB_PASSWORD=sua_senha
 DB_NAME=loja
 DB_PORT=3306
 ```
+### Pré-requisitos para instalação 
+-Node.js (v18 ou superior)
+-npm (v9 ou superior)
+-Banco de dados MySQL
+-Docker(v20.10)
 
 ## 🐳 Como Executar com Docker
 
@@ -97,11 +104,11 @@ docker-compose up --build
 
 ```
 /codigo-fonte
-├── cliente/
-├── vendedor/
-├── estoque/
-├── vendas/
-├── relatorios/
+├── customers/
+├── sellers/
+├── stocks/
+├── sales/
+├── reports/
 └── docker-compose.yml
 ```
 
@@ -120,8 +127,8 @@ docker-compose up --build
 
 ## 🏗️ Arquitetura e Estratégia
 
-- Arquitetura baseada em **microserviços**
-- Comunicação via APIs REST
+- Arquitetura baseada em **MVC (Model-View-Controller) + Service + Repository**
+- Comunicação via APIs REST / API RESTful
 - Banco de dados relacional compartilhado (MySQL)
 - Serviço de relatórios separado para escalabilidade
 
