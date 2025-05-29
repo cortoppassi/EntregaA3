@@ -4,7 +4,6 @@ const PORT = 3000;
 
 const { routesController } = require("./src/routes/routes.js");
 const db = require('./src/models/index.js');
-//routesController(app);
 
 app.use(express.json());
 
