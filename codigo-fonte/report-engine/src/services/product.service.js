@@ -10,6 +10,11 @@ exports.getAllProducts = async () => {
   return products;
 };
 
+exports.getProductByTitle = async (title) => {
+  const product = await ProductRepository.getProductByTitle(title);
+  return product;
+}
+
 exports.getProductById = async (id) => {
   const product = await ProductRepository.getProductById(id)
   return product;

@@ -46,6 +46,23 @@ exports.getAllProducts = async () => {
   }
 };
 
+exports.getProductByTitle = async (title) => {
+  try {
+    const [product] = await sequelize.query(
+      `SELECT * FROM Products WHERE title = :title LIMIT 1;`,
+      {
+        replacements: { title },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+    return product || null;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+
 exports.getProductById = async (id) => {
   try {
     const [product] = await sequelize.query(

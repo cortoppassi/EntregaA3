@@ -31,6 +31,19 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+exports.getProductByTitle = async (req, res) => {
+  const { title } = req.params;
+  try {
+    const product = await ProductsService.getProductByTitle(title);
+    if (!product) {
+      return res.status(404).json({ error: "Produto não encontrado" }); 
+    }
+    return res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Erro interno ao buscar produto" });
+  } 
+};
+
 exports.getProductById = async (req, res) => {
   const { id } = req.params;
   try {

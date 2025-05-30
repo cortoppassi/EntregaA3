@@ -1,57 +1,138 @@
-const { Sale, SaleItem, Product } = require('../models');
+const { sequelize } = require('../models');
 
 class SaleRepository {
-    async createSale(saleData, saleItems) {
-        return await Sale.sequelize.transaction(async (t) => {
-            const sale = await Sale.create(saleData, { transaction: t });
+  async createSale(saleData, saleItems) {
+    const t = await sequelize.transaction();
 
-            for (const item of saleItems) {
-                await SaleItem.create(
-                    {
-                        saleId: sale.id,
-                        productId: item.productId,
-                        quantity: item.quantity,
-                        unit_price: item.unit_price,
-                    },
-                    { transaction: t }
-                );
+    try {
+      // Cria a venda
+      const [result] = await sequelize.query(
+        `INSERT INTO Sales (customerId, sellerId, sale_date, total_value, status)
+         VALUES (?, ?, NOW(), ?, 'completed');`,
+        {
+          replacements: [
+            saleData.customerId,
+            saleData.sellerId,
+            saleData.total_value,
+          ],
+          transaction: t,
+        }
+      );
 
-                const product = await Product.findByPk(item.productId, { transaction: t });
-                if (!product) throw new Error('Product not found');
+      const saleId = result.insertId; // Pega o ID da venda recém-criada
 
-                if (product.stock < item.quantity) {
-                    throw new Error(`Insufficient stock for product: ${product.title}`);
-                }
+      for (const item of saleItems) {
+        // Cria SaleItem
+        await sequelize.query(
+          `INSERT INTO SaleItems (saleId, productId, quantity, unit_price)
+           VALUES (?, ?, ?, ?);`,
+          {
+            replacements: [
+              saleId,
+              item.productId,
+              item.quantity,
+              item.unit_price,
+            ],
+            transaction: t,
+          }
+        );
 
-                product.stock -= item.quantity;
-                await product.save({ transaction: t });
-            }
+        // Verifica estoque
+        const [productResult] = await sequelize.query(
+          `SELECT stock, title FROM Products WHERE id = ? FOR UPDATE;`,
+          {
+            replacements: [item.productId],
+            transaction: t,
+          }
+        );
 
-            return sale;
-        });
+        const product = productResult[0];
+
+        if (!product) {
+          throw new Error('Product not found');
+        }
+
+        if (product.stock < item.quantity) {
+          throw new Error(`Insufficient stock for product: ${product.title}`);
+        }
+
+        // Atualiza estoque
+        await sequelize.query(
+          `UPDATE Products SET stock = stock - ? WHERE id = ?;`,
+          {
+            replacements: [item.quantity, item.productId],
+            transaction: t,
+          }
+        );
+      }
+
+      await t.commit();
+      return { id: saleId, ...saleData, status: 'completed' };
+    } catch (error) {
+      await t.rollback();
+      throw error;
     }
+  }
 
-    async cancelSale(saleId) {
-        return await Sale.sequelize.transaction(async (t) => {
-            const sale = await Sale.findByPk(saleId, { include: SaleItem, transaction: t });
+  async cancelSale(saleId) {
+    const t = await sequelize.transaction();
 
-            if (!sale) throw new Error('Sale not found');
-            if (sale.status === 'canceled') throw new Error('Sale already canceled');
+    try {
+      // Verifica se a venda existe
+      const [saleResult] = await sequelize.query(
+        `SELECT * FROM Sales WHERE id = ? FOR UPDATE;`,
+        {
+          replacements: [saleId],
+          transaction: t,
+        }
+      );
 
-            sale.status = 'canceled';
-            await sale.save({ transaction: t });
+      const sale = saleResult[0];
 
-            for (const item of sale.SaleItems) {
-                const product = await Product.findByPk(item.productId, { transaction: t });
-                if (product) {
-                    product.stock += item.quantity;
-                    await product.save({ transaction: t });
-                }
-            }
+      if (!sale) {
+        throw new Error('Sale not found');
+      }
 
-            return sale;
-        });
+      if (sale.status === 'canceled') {
+        throw new Error('Sale already canceled');
+      }
+
+      // Atualiza status da venda
+      await sequelize.query(
+        `UPDATE Sales SET status = 'canceled' WHERE id = ?;`,
+        {
+          replacements: [saleId],
+          transaction: t,
+        }
+      );
+
+      // Recupera os itens da venda
+      const [itemsResult] = await sequelize.query(
+        `SELECT * FROM SaleItems WHERE saleId = ?;`,
+        {
+          replacements: [saleId],
+          transaction: t,
+        }
+      );
+
+      // Devolve estoque dos produtos
+      for (const item of itemsResult) {
+        await sequelize.query(
+          `UPDATE Products SET stock = stock + ? WHERE id = ?;`,
+          {
+            replacements: [item.quantity, item.productId],
+            transaction: t,
+          }
+        );
+      }
+
+      await t.commit();
+      return { ...sale, status: 'canceled' };
+    } catch (error) {
+      await t.rollback();
+      throw error;
     }
+  }
 }
 
 module.exports = new SaleRepository();
