@@ -1,11 +1,32 @@
-const { Product } = require('../models')
+const { sequelize } = require('../models');
 
 exports.createProduct = async (body) => {
   const { title, author, publisher, price, stock } = body;
 
   try {
-    const product = await Product.create({ title, author, publisher, price, stock });
-    return product;
+    const createdAt = new Date();
+    const updatedAt = new Date();
+
+    const [result] = await sequelize.query(
+      `INSERT INTO loja.Products (title, author, publisher, price, stock, createdAt, updatedAt)
+   VALUES (:title, :author, :publisher, :price, :stock, :createdAt, :updatedAt);`,
+      {
+        replacements: { title, author, publisher, price, stock, createdAt, updatedAt },
+        type: sequelize.QueryTypes.INSERT,
+      }
+    );
+
+    const insertedId = result;
+
+    const [products] = await sequelize.query(
+      `SELECT * FROM Products WHERE id = :id`,
+      {
+        replacements: { id: insertedId },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    return products;
   } catch (error) {
     console.error(error);
     throw error;
@@ -14,7 +35,10 @@ exports.createProduct = async (body) => {
 
 exports.getAllProducts = async () => {
   try {
-    const products = await Product.findAll();
+    const products = await sequelize.query(
+      `SELECT * FROM Products;`,
+      { type: sequelize.QueryTypes.SELECT }
+    );
     return products;
   } catch (error) {
     console.error(error);
@@ -24,30 +48,57 @@ exports.getAllProducts = async () => {
 
 exports.getProductById = async (id) => {
   try {
-    const product = await Product.findOne({
-      where: {
-        id
+    const [product] = await sequelize.query(
+      `SELECT * FROM Products WHERE id = :id LIMIT 1;`,
+      {
+        replacements: { id },
+        type: sequelize.QueryTypes.SELECT,
       }
-    });
-
-    return product;
+    );
+    return product || null;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };
 
 exports.updateProduct = async (id, updateData) => {
   try {
-    await Product.update(updateData, { where: { id } });
+    const fields = [];
+    const replacements = { id };
 
-    const updatedProduct = await Product.findOne({
-      where: {
-        id
+    if (updateData.title !== undefined) {
+      fields.push(`title = :title`);
+      replacements.title = updateData.title;
+    }
+    if (updateData.author !== undefined) {
+      fields.push(`author = :author`);
+      replacements.author = updateData.author;
+    }
+    if (updateData.publisher !== undefined) {
+      fields.push(`publisher = :publisher`);
+      replacements.publisher = updateData.publisher;
+    }
+    if (updateData.price !== undefined) {
+      fields.push(`price = :price`);
+      replacements.price = updateData.price;
+    }
+    if (updateData.stock !== undefined) {
+      fields.push(`stock = :stock`);
+      replacements.stock = updateData.stock;
+    }
+
+    if (fields.length === 0) return await exports.getProductById(id);
+
+    await sequelize.query(
+      `UPDATE Products SET ${fields.join(', ')} WHERE id = :id;`,
+      {
+        replacements,
+        type: sequelize.QueryTypes.RAW, // RAW é o correto aqui
       }
-    });
+    );
 
-    return updatedProduct;
+    return await exports.getProductById(id);
   } catch (error) {
     console.error('Erro ao atualizar produto no repositório:', error);
     throw error;
@@ -56,11 +107,13 @@ exports.updateProduct = async (id, updateData) => {
 
 exports.deleteProduct = async (id) => {
   try {
-    await Product.destroy({
-      where: {
-        id
+    await sequelize.query(
+      `DELETE FROM Products WHERE id = :id;`,
+      {
+        replacements: { id },
+        type: sequelize.QueryTypes.RAW,  // RAW para DELETE
       }
-    });
+    );
   } catch (error) {
     console.error('Erro ao deletar no repositório:', error);
     throw error;

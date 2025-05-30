@@ -7,7 +7,8 @@ const db = require('./src/models/index.js');
 
 app.use(express.json());
 
-db.sequelize.sync({ alter: true })
+// db.sequelize.sync({ alter: true })
+db.sequelize.sync()
   .then(() => {
     console.log('--- Banco de dados sincronizado ---🚀');
     routesController(app);
