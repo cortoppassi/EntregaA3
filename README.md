@@ -1,3 +1,4 @@
+
 # 🛍️ Sistema de Gestão de Vendas - A3
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
@@ -6,11 +7,6 @@
 ![Arquitetura](https://img.shields.io/badge/Arquitetura-Modular--Monolítica-blue)
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
-
-![Repo Size](https://img.shields.io/github/repo-size/cortoppassi/EntregaA3)
-![Last Commit](https://img.shields.io/github/last-commit/cortoppassi/EntregaA3)
-![Issues](https://img.shields.io/github/issues/cortoppassi/EntregaA3)
-![GitHub Stars](https://img.shields.io/github/stars/cortoppassi/EntregaA3?style=social)
 
 ---
 
@@ -64,7 +60,6 @@
 - ✅ 5 clientes cadastrados
 - ✅ 2 vendedores cadastrados
 
-
 ## ⚙️ Variáveis de Ambiente
 
 Crie um arquivo `.env` com os seguintes parâmetros:
@@ -76,11 +71,57 @@ DB_PASSWORD=sua_senha
 DB_NAME=loja
 DB_PORT=3306
 ```
-## 📦 Requisitos para instalação 
+
+## 💻 Executando Localmente
+
+### 🔧 Pré-requisitos
+
 - Node.js (v18 ou superior)
 - npm (v9 ou superior)
 - Banco de dados MySQL
-- Docker(v20.10)
+- Docker (opcional)
+- Biblioteca do **SLI** instalada
+
+### 🔨 Instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/cortoppassi/EntregaA3.git
+cd EntregaA3
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+3. Adicione a biblioteca do **SLI** (caso ainda não tenha adicionado).
+
+4. Execute as migrações para gerar os dados de pré-requisitos do projeto:
+
+```bash
+npm run migrações
+```
+
+5. Execute a aplicação:
+
+```bash
+npm run dev
+```
+
+A API estará disponível em:
+
+```
+http://localhost:3000
+```
+
+O serviço de relatórios (separado) estará acessível em:
+
+```
+http://localhost:3001
+```
 
 ## 🐳 Como Executar com Docker
 
@@ -116,21 +157,22 @@ docker-compose up --build
 
 | Camada          | Função                                          |
 |-----------------|-------------------------------------------------|
-| modelos/        | Representam as tabelas do banco (Sequelize)     |
-| repositórios/   | Consultas e acesso direto ao banco              |
-| serviços/       | Regras de negócio e validações                 |
-| controladores/  | Manipulação de requisições HTTP                |
-| rotas/          | Organização das rotas da API (Express)         |
-| banco de dados/ | Configurações e sementes do Sequelize          |
-| Dockerfile      | Conteinerização de cada microserviço           |
-| docker-compose  | Orquestra todos os serviços e banco MySQL      |
+| models/         | Representam as tabelas do banco                |
+| repositories/   | Consultas e acesso direto ao banco             |
+| services/       | Regras de negócio e validações                 |
+| controllers/    | Manipulação de requisições HTTP                |
+| routes/         | Organização das rotas da API (Express)         |
+| database/       | Configurações e sementes do Sequelize          |
+| Dockerfile      | Conteinerização da aplicação                   |
+| docker-compose  | Orquestra serviços e banco MySQL               |
 
 ## 🏗️ Arquitetura e Estratégia
 
 - Arquitetura baseada em **MVC (Model-View-Controller) + Service + Repository**
+- Estrutura modular dentro de uma aplicação monolítica
 - Comunicação via APIs REST / API RESTful
 - Banco de dados relacional compartilhado (MySQL)
-- Serviço de relatórios separado para escalabilidade
+- Serviço de relatórios como parte integrada ou extensão do backend principal
 
 ## 📑 Licença
 
