@@ -10,10 +10,14 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Para hot reload
+RUN npm install -g nodemon
+
 COPY . .
 
 # Expõe a porta usada pela aplicação
 EXPOSE 3000
 
 # Comando para iniciar a aplicação
-CMD ["node", "server.js"]
+CMD ["nodemon", "server.js"]
+

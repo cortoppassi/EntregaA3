@@ -5,6 +5,8 @@ services:
     build: ./report-engine
     ports:
       - "3000:3000"
+    volumes:
+      - ./report-engine:/app  # <-- adicionado
     depends_on:
       - db
     environment:
@@ -13,11 +15,13 @@ services:
       DB_USER: admin
       DB_PASSWORD: admin
       DB_NAME: loja
-      
+
   store-manager:
     build: ./store-manager
     ports:
       - "3001:3001"
+    volumes:
+      - ./store-manager:/app  # <-- adicionado
     depends_on:
       - db
     environment:
