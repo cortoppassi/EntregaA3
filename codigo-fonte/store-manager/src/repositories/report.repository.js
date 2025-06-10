@@ -3,63 +3,61 @@ const { Sequelize, Op } = require('sequelize');
 
 module.exports = {
   async findBestSellingProducts() {
-    return await OrderItem.findAll({
-      attributes: [
-        'productId',
-        [Sequelize.fn('SUM', Sequelize.col('quantity')), 'totalSold']
-      ],
-      include: {
-        model: Product,
-        attributes: ['name', 'price']
-      },
-      group: ['productId', 'Product.id'],
-      order: [[Sequelize.literal('totalSold'), 'DESC']],
-      limit: 10
-    });
+    const [results] = await sequelize.query(`
+    SELECT 
+      si.productId,
+      p.title AS name,
+      p.price,
+      SUM(si.quantity) AS totalSold
+    FROM "SaleItems" si
+    JOIN "Products" p ON p.id = si.productId
+    GROUP BY si.productId, p.title, p.price
+    ORDER BY totalSold DESC
+    LIMIT 10;
+  `);
+    return results;
   },
 
   async findProductsByCustomer(customerId) {
-    const orders = await Order.findAll({
-      where: { customerId },
-      include: {
-        model: OrderItem,
-        include: {
-          model: Product,
-          attributes: ['name', 'price']
-        }
-      }
+    const [results] = await sequelize.query(`
+    SELECT 
+      si.productId,
+      p.title AS name,
+      si.quantity,
+      si.unit_price AS price
+    FROM "Sales" s
+    JOIN "SaleItems" si ON si.saleId = s.id
+    JOIN "Products" p ON p.id = si.productId
+    WHERE s.customerId = :customerId;
+  `, {
+      replacements: { customerId }
     });
-
-    return orders.flatMap(order =>
-      order.OrderItems.map(item => ({
-        productId: item.productId,
-        name: item.Product.name,
-        quantity: item.quantity,
-        price: item.Product.price
-      }))
-    );
+    return results
   },
 
   async findAverageConsumptionPerCustomer() {
-    return await Order.findAll({
-      attributes: [
-        'customerId',
-        [Sequelize.fn('AVG', Sequelize.col('total')), 'averageSpent']
-      ],
-      group: ['customerId'],
-      include: {
-        model: Customer,
-        attributes: ['name', 'email']
-      }
-    });
+    const [results] = await sequelize.query(`
+    SELECT 
+      c.id AS customerId,
+      c.name,
+      c.email,
+      AVG(s.total_value) AS averageSpent
+    FROM "Customers" c
+    JOIN "Sales" s ON s.customerId = c.id
+    GROUP BY c.id, c.name, c.email;
+  `);
+    return results;
   },
 
   async findLowStockProducts() {
-    return await Product.findAll({
-      where: {
-        stock: { [Op.lt]: 10 }
-      },
-      attributes: ['id', 'name', 'stock']
-    });
+    const [results] = await sequelize.query(`
+    SELECT 
+      id,
+      title AS name,
+      stock
+    FROM "Products"
+    WHERE stock < 10;
+  `);
+    return results;
   }
 };
