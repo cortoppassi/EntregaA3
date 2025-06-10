@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
+    "username": "admin",
     "password": "admin",
     "database": "loja",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "mysql"
   },
   "test": {
-   "username": "root",
+    "username": "admin",
     "password": "admin",
     "database": "loja",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "mysql"
   },
   "production": {
-   "username": "root",
+    "username": "admin",
     "password": "admin",
     "database": "loja",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "mysql"
   }
 }
