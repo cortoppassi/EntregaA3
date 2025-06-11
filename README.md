@@ -145,11 +145,25 @@ docker-compose up --build
 
 ```
 /codigo-fonte
-├── customers/
-├── sellers/
-├── stocks/
-├── sales/
-├── reports/
+├── report-engine/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── models/
+│   │   ├── migrations/
+│   │   └── config/
+│   ├── package.json
+│   └── ... (outros arquivos da aplicação principal)
+├── store-manager/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── repositories/
+│   ├── package.json
+│   └── ... (outros arquivos da aplicação de relatórios)
 └── docker-compose.yml
 ```
 
